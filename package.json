@@ -1,0 +1,19 @@
+{
+  "name": "movies-explorer-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon --inspect -- app.js",
+    "lint": "npx eslint ."
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "airbnb-base"
+    ]
+  },
+  "author": "zuev-prod",
+  "license": "ISC"
+}
