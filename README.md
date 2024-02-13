@@ -7,8 +7,8 @@
 ## Ссылки на проект
 Адрес репозитория: https://github.com/Alexandr-Zuev/movies-explorer-api
 
-IP xx.xxx.xxx.xxx
-Backend https://api.zuev.nomoredomainsmonster.ru
+IP 51.250.20.37
+Backend https://api.zuev.nomoredomainswork.ru
 
 ## Технологии:
 Node.js
