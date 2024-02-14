@@ -48,15 +48,21 @@ async function updateProfile(req, res, next) {
     if (!user) {
       throw new NotFoundError('Пользователь не найден');
     }
+
     user.name = req.body.name;
     user.email = req.body.email;
 
     await user.validate();
+
     await user.save();
+
     return res.status(OK).json(user);
   } catch (err) {
     if (err.name === 'ValidationError') {
       return next(new BadRequestError('Некорректные данные при обновлении пользователя'));
+    }
+    if (err.name === 'MongoError' && err.code === 11000) {
+      return next(new BadRequestError('Дублирование уникального поля'));
     }
     return next(err);
   }

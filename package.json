@@ -1,9 +1,15 @@
 {
   "name": "movies-explorer-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "diploma project",
   "main": "app.js",
-  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon --inspect -- app.js",
+    "lint": "npx eslint ."
+  },
+  "author": "zuev-prod",
+  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
@@ -12,6 +18,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
     "express-winston": "^4.2.0",
     "joi": "^17.11.1",
     "jsonwebtoken": "^9.0.2",
@@ -24,18 +31,5 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.1",
     "nodemon": "^3.0.2"
-  },
-  "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon --inspect -- app.js",
-    "lint": "npx eslint ."
-  },
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended",
-      "airbnb-base"
-    ]
-  },
-  "author": "zuev-prod",
-  "license": "ISC"
+  }
 }

@@ -9,7 +9,7 @@ const CREATED = 201;
 
 async function getMovies(req, res, next) {
   try {
-    const movies = await Movie.find();
+    const movies = await Movie.find({ owner: req.user._id });
     return res.status(OK).json(movies);
   } catch (err) {
     return next(err);
