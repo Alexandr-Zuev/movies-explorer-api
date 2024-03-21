@@ -32,10 +32,12 @@ db.once('open', () => {
 });
 
 app.use(cors({
-  origin: ['http://localhost:3000','http://localhost:3001', 'https://zuev.nomoredomainsmonster.ru'],
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'https://zuev.nomoredomainsmonster.ru'],
   credentials: true,
-  sameSite: 'none',
-  secure: true
+  cookie: {
+    sameSite: 'none',
+    secure: true
+  }
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
