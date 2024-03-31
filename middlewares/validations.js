@@ -22,18 +22,18 @@ const createMovieValidation = celebrate({
     duration: Joi.number().required(),
     year: Joi.string().required(),
     description: Joi.string().required(),
-    image: Joi.string().regex(/^https?:\/\/(?:www\.)?(?:[a-zA-Z0-9-]+)\.(?:[a-zA-Z0-9-]{2,})(?:\/[a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=%]*)?(?:\.(?:jpg|jpeg|png|gif))$/).required(),
-    trailerLink: Joi.string().regex(/^https?:\/\/(?:www\.)?(?:[a-zA-Z0-9-]+)\.(?:[a-zA-Z0-9-]{2,})(?:\/[a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=%]*)?(?:\.(?:mp4|avi|mov|mkv))$/).required(),
+    image: Joi.string().regex(/^https?:\/\/\S+\.(jpg|jpeg|png|gif)$/).required(),
+    trailerLink: Joi.string().regex(/^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/).+$/).required(),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
-    thumbnail: Joi.string().regex(/^https?:\/\/(?:www\.)?(?:[a-zA-Z0-9-]+)\.(?:[a-zA-Z0-9-]{2,})(?:\/[a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=%]*)?(?:\.(?:jpg|jpeg|png|gif))$/).required(),
+    thumbnail: Joi.string().regex(/^https?:\/\/\S+\.(jpg|jpeg|png|gif)$/).required(),
     movieId: Joi.number().required(),
   }),
 });
 
 const deleteMovieValidation = celebrate({
   params: Joi.object().keys({
-    movieId: Joi.string().hex().length(24).required(),
+    movieId: Joi.number().integer().positive().required(),
   }),
 });
 

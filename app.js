@@ -36,8 +36,8 @@ app.use(cors({
   credentials: true,
   cookie: {
     sameSite: 'none',
-    secure: true
-  }
+    secure: true,
+  },
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());

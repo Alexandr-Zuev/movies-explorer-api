@@ -59,18 +59,19 @@ async function createMovie(req, res, next) {
 
 async function deleteMovieById(req, res, next) {
   const { movieId } = req.params;
+  const ownerId = req.user._id;
   if (!mongoose.Types.ObjectId.isValid(movieId)) {
     throw new BadRequestError('Удаление фильма с некорректным ID');
   }
   try {
-    const movieToDelete = await Movie.findById(movieId);
+    const movieToDelete = await Movie.findOne({ movieId: movieId, owner: ownerId });
     if (!movieToDelete) {
       throw new NotFoundError('Фильм с указанным ID не найден');
     }
     if (movieToDelete.owner.toString() !== req.user._id) {
       throw new ForbiddenError('Нельзя удалять фильмы других пользователей');
     }
-    const deletedMovie = await Movie.findByIdAndDelete(movieId);
+    const deletedMovie = await Movie.findOneAndDelete({ movieId: movieId, owner: ownerId });
     if (!deletedMovie) {
       throw new NotFoundError('Ошибка удаления фильма');
     }
