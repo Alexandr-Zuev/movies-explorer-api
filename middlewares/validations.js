@@ -23,7 +23,7 @@ const createMovieValidation = celebrate({
     year: Joi.string().required(),
     description: Joi.string().required(),
     image: Joi.string().regex(/^https?:\/\/\S+\.(jpg|jpeg|png|gif)$/).required(),
-    trailerLink: Joi.string().regex(/^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/).+$/).required(),
+    trailerLink: Joi.string().regex(/^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/|vimeo\.com\/).+$/).required(),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
     thumbnail: Joi.string().regex(/^https?:\/\/\S+\.(jpg|jpeg|png|gif)$/).required(),
