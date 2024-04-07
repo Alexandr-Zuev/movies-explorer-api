@@ -75,6 +75,12 @@ async function getMyProfile(req, res, next) {
     if (!user) {
       throw new NotFoundError('Пользователь не найден');
     }
+    const cookieOptions = {
+      sameSite: 'None',
+      secure: true 
+    };
+
+    res.cookie('jwt', token, cookieOptions);
 
     return res.status(OK).json(user);
   } catch (err) {
