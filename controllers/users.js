@@ -90,7 +90,13 @@ async function login(req, res, next) {
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (isPasswordValid) {
         const token = jwt.sign({ _id: user._id }, process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'dev-secret', { expiresIn: '1w' });
-        res.cookie('jwt', token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 });
+        const cookieOptions = {
+          httpOnly: true,
+          maxAge: 7 * 24 * 60 * 60 * 1000,
+          sameSite: 'None',
+          secure: true
+        };
+        res.cookie('jwt', token, cookieOptions);
         return res.status(OK).json({ message: 'Авторизация успешна', token });
       }
       throw new UnauthorizedError('Неверный пароль');
