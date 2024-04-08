@@ -32,7 +32,7 @@ db.once('open', () => {
 });
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'https://zuev.nomoredomainsmonster.ru'],
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'https://zuev.nomoredomainswork.ru'],
   credentials: true,
   cookie: {
     sameSite: 'none',
