@@ -32,7 +32,12 @@ db.once('open', () => {
 });
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://zuev.nomoredomainswork.ru', 'https://zuev.nomoredomainswork.ru', 'https://zuev.nomoredomainswork.ru/signin]'],
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'http://zuev.nomoredomainswork.ru',
+    'https://zuev.nomoredomainswork.ru'
+  ],
   credentials: true,
 }));
 app.use(express.static(path.join(__dirname, 'public')));
