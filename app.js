@@ -31,15 +31,21 @@ db.once('open', () => {
   console.log('Успешное подключение к MongoDB');
 });
 
-app.use(cors({
-  origin: [
+const options = {  
+  origin: [    
     'http://localhost:3000',
     'http://localhost:3001',
     'http://zuev.nomoredomainswork.ru',
-    'https://zuev.nomoredomainswork.ru'
-  ],
+    'https://zuev.nomoredomainswork.ru',  
+  ],  
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],  
+  preflightContinue: false,  
+  optionsSuccessStatus: 204,  
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],  
   credentials: true,
-}));
+};
+
+app.use(cors(options));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(cookieParser());
